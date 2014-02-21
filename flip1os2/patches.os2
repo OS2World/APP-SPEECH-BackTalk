@@ -1,0 +1,35 @@
+*** flip.h	Wed Aug 26 22:25:18 1992
+--- ../flip.h	Wed Aug 26 20:51:02 1992
+***************
+*** 113,125 ****
+  # define USE_SIG
+  # define SIG_T void     /* return type from (*signal) */
+  # define INT_EXIT 127   /* status when a signal causes exit */
+! # define CHECK_BREAK  brktst();
+! void brktst PARMS ((void));
+! # define SPEC_INIT   spec_init();
+! # define SPEC_EXIT   spec_exit();
+! void spec_init PARMS ((void));
+! void spec_exit PARMS ((void));
+! # define WILDCARD
+  
+  /* date and time */
+  #ifdef MSC51
+--- 113,129 ----
+  # define USE_SIG
+  # define SIG_T void     /* return type from (*signal) */
+  # define INT_EXIT 127   /* status when a signal causes exit */
+! /* # define CHECK_BREAK  brktst();
+!    void brktst PARMS ((void));
+!    # define SPEC_INIT   spec_init();
+!    # define SPEC_EXIT   spec_exit();
+!    void spec_init PARMS ((void));
+!    void spec_exit PARMS ((void));
+! */
+! # define CHECK_BREAK
+! # define SPEC_INIT  
+! # define SPEC_EXIT  
+! /* # define WILDCARD */
+  
+  /* date and time */
+  #ifdef MSC51

@@ -1,0 +1,42 @@
+# makefile for MSC 6.00A under OS/2. Adapted from:
+# 
+#   Following makefile thanks to Tom Horsley <tom@ssd.harris.com>.
+#
+#   Makefile for flip for MS-DOS and Microsoft C 5.1.  You will need a
+#   proper version of make (like the nmake program Microsoft shipped
+#   (far too late) with QuickC 2.0).
+#
+# The MSDOS version used signals and findfirst/findnext calls. We use
+# setargv.obj to handle the wildcards. MVFILE is unlink and rename (the
+# MSDOS versions used a filecopy due to wildcard handling).
+# Darrel Hankerson hank@ducvax.auburn.edu, 26-Aug-92
+
+CC = cl
+CFLAGS = -c -DMSC51 -DLINT -DNDEBUG
+CFMORE =
+LD = cl
+LDFLAGS = -Lp -F 8000
+LDMORE =
+PACK = exepack
+BIND = bind
+
+OBJS = flip.obj getopt.obj mvfile.obj
+
+flip.exe: $(OBJS)
+	$(LD) $(LDFLAGS) $(OBJS) setargv.obj flip.def /link /NOE
+
+flipbnd.exe : flip.exe
+	$(BIND) $< /o $@
+
+all : flip.exe flipbnd.exe 
+
+
+flip.obj: flip.c flip.h
+	$(CC) $(CFLAGS) $(CFMORE) flip.c
+
+getopt.obj: getopt.c flip.h
+	$(CC) $(CFLAGS) $(CFMORE) getopt.c
+
+mvfile.obj: mvfile.c flip.h
+	$(CC) $(CFLAGS) $(CFMORE) mvfile.c
+

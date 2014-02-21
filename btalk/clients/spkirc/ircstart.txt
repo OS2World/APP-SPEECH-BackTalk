@@ -1,0 +1,5 @@
+/loadspkirc
+/spkirc ctcp on
+/spkirc mymsg on
+/spkirc notify on
+/var $PARTIALNICK,guard

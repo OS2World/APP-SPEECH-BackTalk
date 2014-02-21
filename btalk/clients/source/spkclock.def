@@ -1,0 +1,6 @@
+NAME SpkClock WINDOWCOMPAT
+IMPORTS
+   btclient.BTSayString
+   btclient.BTSayFile
+   btclient.BTSayNumQueue
+

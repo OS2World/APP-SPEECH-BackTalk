@@ -1,0 +1,40 @@
+This version of Rahul Dhesi's flip runs on OS/2 1.3 and 2.0 (not tested
+under 1.1 or 1.2). There is also a bound OS/2 and DOS executable,
+flipbnd.exe.
+
+flip converts UNIX-style newlines (lf) to DOS-style newlines (cr/lf),
+and conversely. HPFS file names are supported.
+
+Files in this archive:
+	flip.def			definition file for link
+	flip.exe			OS/2 executable
+	flipbnd.exe 	MSDOS and OS/2 bound executable
+	makefile.msc	makefile for MSC 6.00A
+	mvfile.c			replacement 'move file'
+	patches.os2		context diff's
+	REAME.OS2		this file
+
+Dhesi used findfirst/findnext calls in the MSDOS version. This required
+some fancy code. This version uses setargv.obj to handle wildcards and long
+filenames. 
+
+The files
+ FLIP1EXE.ARC  18374  8  890731  Convert text files MSDOS<->UNIX format, 1of2
+ FLIP1SRC.ARC  26708  8  890713  Convert text files MSDOS<->UNIX format, 2of2
+can be obtained from simtel20.army.mil in pd1:<msdos.txtutl>.
+
+flip1exe contains patches for MSC 5.1 which must be applied to the files 
+in flip1src. Then the patches in this archive can be applied:
+ 
+1. unzip flip1src and flip1exe
+2. rename checksum.s to Checksums
+3. apply the patches in flip1exe
+     patch < patch.msc
+4. unzip flip1os2
+5. apply the patches in flip1os2
+     patch < patches.os2
+6. make (I use dmake)
+     make -f makefile.msc all
+
+
+Ported by Darrel Hankerson hank@ducvax.auburn.edu, 26-Aug-92.
